@@ -99,6 +99,96 @@ body {
     color: var(--text-main);
 }
 
+/*Settings*/
+.settings-panel {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+}
+
+.setting-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+    flex: 1;
+}
+
+.scroll-list {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    max-height: 150px; /* Limits the height */
+    overflow-y: auto;  /* Enables vertical scrolling */
+    padding: 5px;
+}
+
+.dropdown {
+    position: relative;
+    z-index: 20;
+}
+
+.dropdown-btn {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: #f8fafc;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+}
+
+.dropdown-btn:hover {
+    background: #f1f5f9;
+}
+
+.dropdown .scroll-list {
+    position: absolute;
+    width: 100%;
+    top: 110%;
+    left: 0;
+    z-index: 10;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.dropdown-btn::after {
+    float: right;
+}
+
+.dropdown.open {
+    margin-bottom: 160px;
+}
+
+.option {
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-main);
+    transition: 0.2s;
+}
+
+.option:hover {
+    background: #f1f5f9;
+}
+
+.option.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* Custom Scrollbar for better look */
+.scroll-list::-webkit-scrollbar {
+    width: 6px;
+}
+.scroll-list::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
 /* HUD & Timer */
 #hud {
     display: flex;

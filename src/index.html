@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuizFlow</title>
     <link rel="stylesheet" href="style.css">
     <!-- Adding a nice Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <!-- Animated Background -->
     <div class="mesh-gradient"></div>
@@ -17,7 +20,7 @@
         <div id="home" class="centered-view">
             <h1 class="title">Quiz<span>Flow</span></h1>
             <p class="subtitle">The ultimate trivia experience powered by OpenTDB.</p>
-            
+
             <div class="feature-grid">
                 <div class="f-card">
                     <span>⏱️</span>
@@ -32,8 +35,49 @@
                     <p>Score Tracking</p>
                 </div>
             </div>
+            <div class="settings-panel">
 
-            <button class="btn" id="play-btn">Initializing...</button>
+                <!-- CATEGORY -->
+                <div class="setting-group">
+                    <label>Category</label>
+                    <div class="dropdown">
+                        <button class="dropdown-btn" id="category-btn">Any Category ▾</button>
+                        <div class="scroll-list hidden" id="category-list">
+                            <div class="option active" data-value="any">Any Category</div>
+                            <div class="option" data-value="9">General Knowledge</div>
+                            <div class="option" data-value="10">Books</div>
+                            <div class="option" data-value="11">Film</div>
+                            <div class="option" data-value="12">Music</div>
+                            <div class="option" data-value="21">Sports</div>
+                            <div class="option" data-value="18">Computers</div>
+                            <div class="option" data-value="19">Mathematics</div>
+                            <div class="option" data-value="22">Geography</div>
+                            <div class="option" data-value="23">History</div>
+                            <div class="option" data-value="17">Science & Nature</div>
+                            <div class="option" data-value="26">Celebrities</div>
+                            <div class="option" data-value="27">Animals</div>
+                            <div class="option" data-value="28">Vehicles</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIFFICULTY -->
+                <div class="setting-group">
+                    <label>Difficulty</label>
+                    <div class="dropdown">
+                        <button class="dropdown-btn" id="difficulty-btn">Any Difficulty ▾</button>
+                        <div class="scroll-list hidden" id="difficulty-list">
+                            <div class="option active" data-value="any">Any Difficulty</div>
+                            <div class="option" data-value="easy">Easy</div>
+                            <div class="option" data-value="medium">Medium</div>
+                            <div class="option" data-value="hard">Hard</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="btn" id="play-btn">Start Quiz</button>
             <p>Ready to test your knowledge?</p>
         </div>
 
@@ -49,10 +93,12 @@
                     <h2 id="score">0</h2>
                 </div>
             </div>
-            <div id="timer-bar"><div id="timer-progress"></div></div>
-            
+            <div id="timer-bar">
+                <div id="timer-progress"></div>
+            </div>
+
             <h2 id="question">Preparing your challenge...</h2>
-            
+
             <div class="choices-list">
                 <div class="choice-container" data-number="1">
                     <p class="choice-prefix">A</p>
@@ -87,4 +133,5 @@
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>

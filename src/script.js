@@ -9,6 +9,15 @@ const end = document.getElementById('end');
 const playBtn = document.getElementById('play-btn');
 const reviewContainer = document.getElementById('review-container');
 
+/* ✅ CHANGED: dropdown elements instead of select */
+const categoryBtn = document.getElementById('category-btn');
+const difficultyBtn = document.getElementById('difficulty-btn');
+const categoryList = document.getElementById('category-list');
+const difficultyList = document.getElementById('difficulty-list');
+
+let selectedCategory = "any";
+let selectedDifficulty = "any";
+
 let currentQuestion = {};
 let acceptingAnswers = false;
 let score = 0;
@@ -32,31 +41,82 @@ const resetProgressBar = () => {
     progressBar.style.transition = 'none';
     progressBar.style.width = '100%';
 
-    // Force reflow (removes need for setTimeout)
     progressBar.offsetWidth;
 
     progressBar.style.transition = 'width 10s linear';
     progressBar.style.width = '0%';
 };
 
-//FETCH QUESTIONS
-fetch("https://opentdb.com/api.php?amount=10&type=multiple")
-    .then(res => res.json())
-    .then(data => {
-        questions = data.results.map(q => {
-            const formatted = { question: q.question, options: [] };
-            const correctAns = q.correct_answer;
-            const options = [...q.incorrect_answers]
-            formatted.answer = Math.floor(Math.random() * 4) + 1;
-            options.splice(formatted.answer - 1, 0, correctAns);
-            formatted.options = options;
+/* ✅ ADDED: dropdown toggle */
+categoryBtn.addEventListener('click', () => {
+    categoryList.classList.toggle('hidden');
+});
 
-            return formatted;
-        });
+difficultyBtn.addEventListener('click', () => {
+    difficultyList.classList.toggle('hidden');
+});
 
-        playBtn.innerText = "Begin Assessment";
-        playBtn.addEventListener('click', startGame);
+/* ✅ ADDED: option selection */
+document.querySelectorAll('#category-list .option').forEach(option => {
+    option.addEventListener('click', () => {
+        document.querySelectorAll('#category-list .option').forEach(o => o.classList.remove('active'));
+        option.classList.add('active');
+
+        selectedCategory = option.dataset.value;
+        categoryBtn.innerText = option.innerText + " ▾";
+
+        categoryList.classList.add('hidden');
     });
+});
+
+document.querySelectorAll('#difficulty-list .option').forEach(option => {
+    option.addEventListener('click', () => {
+        document.querySelectorAll('#difficulty-list .option').forEach(o => o.classList.remove('active'));
+        option.classList.add('active');
+
+        selectedDifficulty = option.dataset.value;
+        difficultyBtn.innerText = option.innerText + " ▾";
+
+        difficultyList.classList.add('hidden');
+    });
+});
+
+//FETCH QUESTIONS
+playBtn.addEventListener('click', () => {
+    if (playBtn.innerText === "Loading...") return;
+
+    /* ✅ CHANGED: use selected values */
+    const category = selectedCategory;
+    const difficulty = selectedDifficulty;
+
+    let url = `https://opentdb.com/api.php?amount=10&type=multiple`;
+    if (category !== 'any') url += `&category=${category}`;
+    if (difficulty !== 'any') url += `&difficulty=${difficulty}`;
+
+    playBtn.innerText = "Loading...";
+
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            questions = data.results.map(q => {
+                const formatted = { question: q.question, options: [] };
+                const correctAns = q.correct_answer;
+                const options = [...q.incorrect_answers];
+                formatted.answer = Math.floor(Math.random() * 4) + 1;
+                options.splice(formatted.answer - 1, 0, correctAns);
+                formatted.options = options;
+                return formatted;
+            });
+
+            playBtn.innerText = "Begin Assessment";
+            startGame();
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Failed to load questions. Please check your connection.");
+            playBtn.innerText = "Begin Assessment";
+        });
+});
 
 //START GAME
 const startGame = () => {
@@ -78,7 +138,6 @@ const getNewQuestion = () => {
 
     clearInterval(timer);
 
-    // Reset + start progress bar cleanly
     resetProgressBar();
     startTimer();
 
@@ -110,7 +169,7 @@ const startTimer = () => {
 
             if (acceptingAnswers) {
                 acceptingAnswers = false;
-                handleChoice(null); // timeout case
+                handleChoice(null);
             }
         }
     }, 1000);
