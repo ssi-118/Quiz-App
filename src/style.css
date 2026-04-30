@@ -189,6 +189,7 @@ body {
     background: #cbd5e1;
     border-radius: 10px;
 }
+
 /* HUD & Timer */
 #hud {
     display: flex;

@@ -8,8 +8,6 @@ const home = document.getElementById('home');
 const end = document.getElementById('end');
 const playBtn = document.getElementById('play-btn');
 const reviewContainer = document.getElementById('review-container');
-
-/* ✅ CHANGED: dropdown elements instead of select */
 const categoryBtn = document.getElementById('category-btn');
 const difficultyBtn = document.getElementById('difficulty-btn');
 const categoryList = document.getElementById('category-list');
@@ -17,7 +15,6 @@ const difficultyList = document.getElementById('difficulty-list');
 
 let selectedCategory = "any";
 let selectedDifficulty = "any";
-
 let currentQuestion = {};
 let acceptingAnswers = false;
 let score = 0;
@@ -28,7 +25,7 @@ let quizHistory = [];
 let timer;
 let timeLeft = 10;
 
-// VIEW TOGGLING (IMPROVED)
+// VIEW TOGGLING
 const views = [home, game, end];
 
 const showView = (viewToShow) => {
@@ -47,7 +44,7 @@ const resetProgressBar = () => {
     progressBar.style.width = '0%';
 };
 
-/* ✅ ADDED: dropdown toggle */
+//Dropdown Toggle
 categoryBtn.addEventListener('click', () => {
     categoryList.classList.toggle('hidden');
 });
@@ -56,7 +53,7 @@ difficultyBtn.addEventListener('click', () => {
     difficultyList.classList.toggle('hidden');
 });
 
-/* ✅ ADDED: option selection */
+//Option Selection
 document.querySelectorAll('#category-list .option').forEach(option => {
     option.addEventListener('click', () => {
         document.querySelectorAll('#category-list .option').forEach(o => o.classList.remove('active'));
