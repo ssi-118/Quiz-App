@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizFlow</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Adding a nice Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="mesh-gradient"></div>
+
+    <div class="container">
+        <!-- START SCREEN -->
+        <div id="home" class="view-section centered-view">
+            <h1 class="title">Quiz<span>Flow</span></h1>
+            <p class="subtitle">The ultimate trivia experience powered by OpenTDB.</p>
+            
+            <div class="feature-grid">
+                <div class="f-card">
+                    <span>⏱️</span>
+                    <p>10s Blitz</p>
+                </div>
+                <div class="f-card">
+                    <span>🧠</span>
+                    <p>Adaptive</p>
+                </div>
+                <div class="f-card">
+                    <span>🏆</span>
+                    <p>Score Tracking</p>
+                </div>
+            </div>
+
+            <button class="btn main-btn" id="play-btn">Initializing...</button>
+            <p class="meta-text">Ready to test your knowledge?</p>
+        </div>
+
+        <!-- GAME SCREEN -->
+        <div id="game" class="view-section centered-view hidden">
+            <div id="hud">
+                <div class="hud-item">
+                    <p>PROGRESS</p>
+                    <h2 id="questionCounter">1/10</h2>
+                </div>
+                <div class="hud-item text-right">
+                    <p>CURRENT SCORE</p>
+                    <h2 id="score">0</h2>
+                </div>
+            </div>
+            <div id="timer-bar"><div id="timer-progress"></div></div>
+            
+            <h2 id="question">Preparing your challenge...</h2>
+            
+            <div class="choices-list">
+                <div class="choice-container" data-number="1">
+                    <p class="choice-prefix">A</p>
+                    <p class="choice-text" data-number="1"></p>
+                </div>
+                <div class="choice-container" data-number="2">
+                    <p class="choice-prefix">B</p>
+                    <p class="choice-text" data-number="2"></p>
+                </div>
+                <div class="choice-container" data-number="3">
+                    <p class="choice-prefix">C</p>
+                    <p class="choice-text" data-number="3"></p>
+                </div>
+                <div class="choice-container" data-number="4">
+                    <p class="choice-prefix">D</p>
+                    <p class="choice-text" data-number="4"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- END SCREEN -->
+        <div id="end" class="view-section hidden">
+            <div class="result-header">
+                <h1 class="title">Quiz <span>Summary</span></h1>
+                <h2 id="finalScoreText"></h2>
+            </div>
+            <div id="review-container"></div>
+            <div class="center-footer">
+                <button class="btn main-btn" onclick="window.location.reload()">New Session</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
