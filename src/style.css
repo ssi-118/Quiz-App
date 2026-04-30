@@ -7,6 +7,7 @@
     --success: #10b981;
     --error: #f43f5e;
     --glass: rgba(255, 255, 255, 0.95);
+    --border: #e2e8f0;
 }
 
 * {
@@ -196,21 +197,15 @@ body {
     font-weight: 700;
     cursor: pointer;
     transition: 0.3s;
+    box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.39);
 }
 
 .btn:hover {
     background: var(--primary-dark);
-    transform: scale(1.02);
-}
-
-.main-btn {
-    box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.39);
-}
-
-.main-btn:hover {
     box-shadow: 0 6px 20px rgba(99, 102, 241, 0.23);
     transform: translateY(-2px);
 }
+
 
 .center-footer {
     display: flex;

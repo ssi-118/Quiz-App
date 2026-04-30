@@ -14,7 +14,7 @@
 
     <div class="container">
         <!-- START SCREEN -->
-        <div id="home" class="view-section centered-view">
+        <div id="home" class="centered-view">
             <h1 class="title">Quiz<span>Flow</span></h1>
             <p class="subtitle">The ultimate trivia experience powered by OpenTDB.</p>
             
@@ -33,12 +33,12 @@
                 </div>
             </div>
 
-            <button class="btn main-btn" id="play-btn">Initializing...</button>
-            <p class="meta-text">Ready to test your knowledge?</p>
+            <button class="btn" id="play-btn">Initializing...</button>
+            <p>Ready to test your knowledge?</p>
         </div>
 
         <!-- GAME SCREEN -->
-        <div id="game" class="view-section centered-view hidden">
+        <div id="game" class="centered-view hidden">
             <div id="hud">
                 <div class="hud-item">
                     <p>PROGRESS</p>
@@ -74,14 +74,14 @@
         </div>
 
         <!-- END SCREEN -->
-        <div id="end" class="view-section hidden">
+        <div id="end" class="hidden">
             <div class="result-header">
                 <h1 class="title">Quiz <span>Summary</span></h1>
                 <h2 id="finalScoreText"></h2>
             </div>
             <div id="review-container"></div>
             <div class="center-footer">
-                <button class="btn main-btn" onclick="window.location.reload()">New Session</button>
+                <button class="btn" onclick="window.location.reload()">New Session</button>
             </div>
         </div>
     </div>
