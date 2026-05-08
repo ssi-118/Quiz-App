@@ -46,3 +46,8 @@ project-folder/
     ├── style.css  #Global styles, layout, and animations
     ├── script.js  #Game logic, timer management, and API integration
 ```
+
+## Live Demo
+```
+https://quiz-app-plum-seven.vercel.app/
+```
